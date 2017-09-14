@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.crm.domain.ElecUserFile" table="elec_user_file" schema="itheima1128elec">
+        <id name="fileId">
+            <column name="fileID" sql-type="varchar(255)"/>
+        </id>
+        <property name="fileName">
+            <column name="fileName" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="fileUrl">
+            <column name="fileURL" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="progressTime">
+            <column name="progressTime" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="userId">
+            <column name="userID" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.crm.domain.ElecFileupload" table="elec_fileupload" schema="itheima1128elec">
+        <id name="seqId">
+            <column name="seqId" sql-type="int(11)"/>
+        </id>
+        <property name="projId">
+            <column name="projId" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="belongTo">
+            <column name="belongTo" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="fileName">
+            <column name="fileName" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="fileUrl">
+            <column name="fileUrl" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="progressTime">
+            <column name="progressTime" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="comment">
+            <column name="comment" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

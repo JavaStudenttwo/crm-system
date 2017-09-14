@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.crm.domain.ElecUserRole" table="elec_user_role" schema="itheima1128elec">
+        <composite-id mapped="true" class="com.itheima.crm.domain.ElecUserRolePK">
+            <key-property name="userId">
+                <column name="userID" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="roleId">
+                <column name="roleID" sql-type="varchar(255)"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

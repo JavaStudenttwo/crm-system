@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.crm.domain.ElecExportfields" table="elec_exportfields" schema="itheima1128elec">
+        <id name="belongTo">
+            <column name="belongTo" sql-type="varchar(255)"/>
+        </id>
+        <property name="expNameList">
+            <column name="expNameList" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="expFieldName">
+            <column name="expFieldName" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="noExpNameList">
+            <column name="noExpNameList" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="noExpFieldName">
+            <column name="noExpFieldName" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

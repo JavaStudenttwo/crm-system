@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.crm.domain.ElecCommonmsg" table="elec_commonmsg" schema="itheima1128elec">
+        <id name="comId">
+            <column name="comID" sql-type="varchar(255)"/>
+        </id>
+        <property name="stationRun">
+            <column name="stationRun" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="devRun">
+            <column name="devRun" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="createDate">
+            <column name="createDate" sql-type="datetime" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

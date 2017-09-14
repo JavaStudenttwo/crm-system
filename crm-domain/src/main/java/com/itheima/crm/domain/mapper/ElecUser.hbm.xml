@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.crm.domain.ElecUser" table="elec_user" schema="itheima1128elec">
+        <id name="userId">
+            <column name="userID" sql-type="varchar(255)"/>
+        </id>
+        <property name="jctId">
+            <column name="jctID" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="jctUnitId">
+            <column name="jctUnitID" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="userName">
+            <column name="userName" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="logonName">
+            <column name="logonName" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="logonPwd">
+            <column name="logonPwd" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="sexId">
+            <column name="sexID" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="birthday">
+            <column name="birthday" sql-type="date" not-null="true"/>
+        </property>
+        <property name="address">
+            <column name="address" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="contactTel">
+            <column name="contactTel" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="mobile">
+            <column name="mobile" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="isDuty">
+            <column name="isDuty" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="postId">
+            <column name="postID" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="onDutyDate">
+            <column name="onDutyDate" sql-type="date" not-null="true"/>
+        </property>
+        <property name="offDutyDate">
+            <column name="offDutyDate" sql-type="date" not-null="true"/>
+        </property>
+        <property name="remark">
+            <column name="remark" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

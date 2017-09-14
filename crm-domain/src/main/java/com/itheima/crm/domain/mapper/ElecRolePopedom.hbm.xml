@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.itheima.crm.domain.ElecRolePopedom" table="elec_role_popedom" schema="itheima1128elec">
+        <composite-id mapped="true" class="com.itheima.crm.domain.ElecRolePopedomPK">
+            <key-property name="roleId">
+                <column name="roleID" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="mid">
+                <column name="mid" sql-type="varchar(255)"/>
+            </key-property>
+            <key-property name="pid">
+                <column name="pid" sql-type="varchar(255)"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

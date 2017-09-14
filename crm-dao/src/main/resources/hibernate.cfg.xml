@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="com.itheima.crm.domain.ElecCommonmsg"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecCommonmsg.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecCommonmsgContent"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecCommonmsgContent.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecExportfields"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecExportfields.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecFileupload"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecFileupload.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecPopedom"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecPopedom.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecRole"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecRole.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecRolePopedom"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecRolePopedom.hbm.xml"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecSystemddl.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecSystemddl"/>
+        <mapping class="com.itheima.crm.domain.ElecText"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecText.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecUser"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecUser.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecUserFile"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecUserFile.hbm.xml"/>
+        <mapping class="com.itheima.crm.domain.ElecUserRole"/>
+        <mapping resource="com/itheima/crm/domain/mapper/ElecUserRole.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

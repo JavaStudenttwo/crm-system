@@ -1,8 +1,11 @@
 package com.itheima.crm.dao.impl;
 
+import com.itheima.crm.domain.ElecText;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * CommonDaoImpl Tester.
@@ -37,7 +40,14 @@ public class CommonDaoImplTest {
      */
     @Test
     public void testSave() throws Exception {
-//TODO: Test goes here... 
+//TODO: Test goes here...
+        /*ElecText elecText = new ElecText();
+        elecText.setTextName("hahaha");
+        elecText.setTextId("23424");
+        ApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("applicationContext1.xml");
+        CommonDaoImpl commonDao = (CommonDaoImpl) applicationContext.getBean("CommonDaoImpl");
+        commonDao.save(elecText);*/
     }
 
     /**

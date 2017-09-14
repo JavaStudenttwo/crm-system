@@ -20,11 +20,11 @@ eval("document.location='"+action+"'");
 </HEAD>
 
 <FRAMESET border=0 frameSpacing=0 rows=82,* frameBorder=0 id="mainparent">
-	<FRAME name=topFrame src="${pageContext.request.contextPath }/crm/menuAction_title.do" noResize scrolling=no>
+	<FRAME name=topFrame src="${pageContext.request.contextPath }/crm/menuAction_title.action" noResize scrolling=no>
 	<FRAMESET id="main" border="0" frameSpacing="0" frameBorder="0" cols="153,1%,*">
-		<FRAME name="leftFrame" src="${pageContext.request.contextPath }/crm/menuAction_title.do" noResize>
-		<frame name="changeButton" src="${pageContext.request.contextPath }/crm/menuAction_title.do" frameBorder=0 marginHeight=0 marginWidth=0 scrolling=no noresize>
-	<FRAME name="mainFrame" src="${pageContext.request.contextPath }/crm/menuAction_title.do" >
+		<FRAME name="leftFrame" src="${pageContext.request.contextPath }/crm/menuAction_left.action" noResize>
+		<frame name="changeButton" src="${pageContext.request.contextPath }/crm/menuAction_change.action" frameBorder=0 marginHeight=0 marginWidth=0 scrolling=no noresize>
+	<FRAME name="mainFrame" src="${pageContext.request.contextPath }/crm/menuAction_loading.action" >
 </FRAMESET>
 </FRAMESET>
 

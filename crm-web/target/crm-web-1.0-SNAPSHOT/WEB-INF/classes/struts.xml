@@ -7,11 +7,8 @@
 	<constant name="struts.objectFactory" value="spring"></constant>
 
 	<constant name="struts.devMode" value="false"></constant>
-	<constant name="struts.action.extension" value="do"></constant>
-	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 
-
-	<package name="basicstruts2" extends="struts-default">
+	<package name="crm" namespace="/crm" extends="struts-default">
 		<global-results>
 			<result name="login">/login.jsp</result>
 		</global-results>
@@ -20,13 +17,12 @@
 			<result name="save">/system/textAdd.jsp</result>
 		</action>
 
-		<action name="elecMenuAction_*" class="elecMenuAction" method="{1}">
-			<result name="menuHome">/WEB-INF/page/menu/home.jsp</result>
-			<!--<result name="home">/menu/home.jsp</result>
-			<result name="left">/menu/left.jsp</result>
-			<result name="loading">/menu/loading.jsp</result>
-			<result name="title">/menu/title.jsp</result>
-			<result name="change">/menu/change.jsp</result>-->
+		<action name="menuAction_*" class="menuAction" method="{1}">
+			<result name="home">/WEB-INF/page/menu/home.jsp</result>
+			<result name="left">/WEB-INF/page/menu/left.jsp</result>
+			<result name="loading">/WEB-INF/page/menu/loading.jsp</result>
+			<result name="title">/WEB-INF/page/menu/title.jsp</result>
+			<result name="change">/WEB-INF/page/menu/change.jsp</result>
 		</action>
 
 		<action name="userActon_*" class="userAction" method="{1}">

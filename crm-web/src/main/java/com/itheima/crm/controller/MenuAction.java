@@ -8,9 +8,9 @@ import org.springframework.stereotype.Controller;
  * Created by 13718 on 2017/9/13.
  */
 @SuppressWarnings("serial")
-@Controller("elecMenuAction")
+@Controller("menuAction")
 @Scope(value = "prototype")
-public class ElecMenuAction extends BaseAction<MenuForm> {
+public class MenuAction extends BaseAction<MenuForm> {
 
     MenuForm menuForm = this.getModel();
 
@@ -18,10 +18,10 @@ public class ElecMenuAction extends BaseAction<MenuForm> {
         String name = menuForm.getName();
         String password = menuForm.getPassword();
         System.out.println(name+""+password);
-        return "menuHome";
+        return "home";
     }
 
-    /*public String left(){
+    public String left(){
         return "left";
     }
     public String change(){
@@ -32,7 +32,7 @@ public class ElecMenuAction extends BaseAction<MenuForm> {
     }
     public String title(){
         return "title";
-    }*/
+    }
 
 
 

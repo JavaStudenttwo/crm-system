@@ -1,7 +1,6 @@
 package com.itheima.crm.controller;
 
 import com.itheima.crm.domain.ElecText;
-import com.itheima.crm.service.ElecTextService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 

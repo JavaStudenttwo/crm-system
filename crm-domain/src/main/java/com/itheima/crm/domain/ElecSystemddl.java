@@ -76,4 +76,20 @@ public class ElecSystemddl {
         result = 31 * result + (ddlName != null ? ddlName.hashCode() : 0);
         return result;
     }
+
+    private String keywordname;
+    private String typeflag;
+    private String[] itemname;
+
+    public String getKeywordname() {
+        return keywordname;
+    }
+
+    public String getTypeflag() {
+        return typeflag;
+    }
+
+    public String[] getItemname() {
+        return itemname;
+    }
 }

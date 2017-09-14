@@ -1,6 +1,8 @@
 package com.itheima.crm.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 13718 on 2017/9/12.
@@ -17,6 +19,65 @@ public class ElecPopedom {
     private String target;
     private Boolean isParent;
     private Boolean isMenu;
+
+
+    /**非持久化javabean属性*/
+    //表示如果一个父包含的所有子的集合
+    private List<ElecPopedom> list = new ArrayList<ElecPopedom>();
+    //角色ID
+    private String roleID;
+    /**
+     * 添加一个标识，判断页面的复选框是否被选中，该标识要放置到ElecPopedom对象中
+     flag=1：选中
+     flag=2：没有被选中
+     */
+    private String flag;
+
+    //页面中传递的选中的功能权限
+    private String [] selectoper;
+
+    //页面中传递的选中的用户ID
+    private String [] selectuser;
+
+    public List<ElecPopedom> getList() {
+        return list;
+    }
+
+    public void setList(List<ElecPopedom> list) {
+        this.list = list;
+    }
+
+    public String getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(String roleID) {
+        this.roleID = roleID;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public String[] getSelectoper() {
+        return selectoper;
+    }
+
+    public void setSelectoper(String[] selectoper) {
+        this.selectoper = selectoper;
+    }
+
+    public String[] getSelectuser() {
+        return selectuser;
+    }
+
+    public void setSelectuser(String[] selectuser) {
+        this.selectuser = selectuser;
+    }
 
     @Id
     @Column(name = "mid", nullable = false, length = 255)

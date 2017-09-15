@@ -57,18 +57,36 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		this.getHibernateTemplate().deleteAll(list);
 	}
 
+
+	/**
+	 * 数据库查询方法
+	 */
 	public List<T> findCollectionByConditionNoPage(String condition,
 			final Object[] params, Map<String, String> orderby) {
-		//hql语句
+		/**
+		 * 1.先写出hql语句的基本内容
+		 */
 		String hql = "from "+entityClass.getSimpleName()+" o where 1=1 ";
-		//将Map集合中存放的字段排序，组织成ORDER BY o.textDate ASC,o.textName DESC
+		/**
+		 * 2.添加查询结果的排序约束
+		 * 将Map集合中存放的字段排序，组织成ORDER BY o.textDate ASC,o.textName DESC
+		 */
 		String orderbyCondition = this.orderbyHql(orderby);
-		//添加查询条件
+		/**
+		 * 3.将各个语句结合拼装成最终的hql语句
+		 *
+		 */
 		final String finalHql = hql + condition + orderbyCondition;
 		//查询，执行hql语句
-		/**方案一*/
+		/**
+		 * 方案一
+		 *	使用hibernate的模板方法
+		 */
 		//List<T> list = this.getHibernateTemplate().find(finalHql, params);
-		/**方案二*/
+		/**
+		 * 方案二
+		 *	添加绑定当前线程的操作
+		 */
 //		SessionFactory sf = this.getHibernateTemplate().getSessionFactory();
 //		Session s = sf.getCurrentSession();//Session与线程绑定
 //		Query query = s.createQuery(finalHql);
@@ -78,7 +96,10 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 //			}
 //		}
 //		List<T> list = query.list();
-		/**方案三*/
+		/**
+		 * 方案三
+		 *
+		 */
 //		报错，没有找到原因，解决方案的第一个是执行一个强转
 		List<T> list = (List<T>) this.getHibernateTemplate().execute(new HibernateCallback() {
 
@@ -97,8 +118,15 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 		return list;
 	}
 
-	/**将Map集合中存放的字段排序，组织成
-	 * ORDER BY o.textDate ASC,o.textName DESC*/
+	/**
+	 * 将Map集合中存放的字段排序，组织成
+	 * 	ORDER BY o.textDate ASC,o.textName DESC
+	 *
+	 * map集合orderby内，key值为属性名，例如 o.textDate
+	 * 				   value值为排序方式，例如 DESC(降序)
+	 * 				   加起来组成的语句 o.textDate DESC 的含义是按textDate降序
+	 *
+	 */
 	private String orderbyHql(Map<String, String> orderby) {
 		StringBuffer buffer = new StringBuffer("");
 		if(orderby!=null && orderby.size()>0){

@@ -15,19 +15,13 @@ public class TextAction extends BaseAction<ElecText>{
 
     ElecText elecText = this.getModel();
 
-    @Resource(name = ElecTextService.SERVICE_NAME)
-    private ElecTextService elecTextService;
-
-    public String save(){
-        elecTextService.saveElecText(elecText);
-        return "save";
-    }
-
-
-
-
-
-
+//    @Resource(name = ElecTextService.SERVICE_NAME)
+//    private ElecTextService elecTextService;
+//
+//    public String save(){
+//        elecTextService.saveElecText(elecText);
+//        return "save";
+//    }
 
 
 }

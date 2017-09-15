@@ -66,18 +66,45 @@ public class ElecCommonMsgServiceImpl implements IElecCommonMsgService {
 	
 
 	public ElecCommonmsg findCommonMsg() {
+		/**
+		 * 查询参数：
+		 * String condition:""
+		 * Object[] params:null
+		 * Map<String,String>orderby:null
+		 *
+		 * 最终查询语句：from ElecCommonmsg o where 1=1
+		 * 		查询结果为elec_commonmsg表的所有内容
+		 */
 		List<ElecCommonmsg> list = elecCommonMsgDao.findCollectionByConditionNoPage("", null, null);
+
 		ElecCommonmsg commonMsg = null;
 		if(list!=null && list.size()>0){
+
+			/**
+			 * 获得查询出的list集合的第一个值list[0]
+			 * 		一个ElecCommonmsg对象
+			 */
 			commonMsg = list.get(0);
-			//获取数据内容
-			//以类型作为条件，按照显示顺序升序排列，查询站点运行情况的数据
+
+			/**
+			 * 查询参数：
+			 * String condition: " and o.type=? "
+			 * Object[] params: "1"
+			 * Map<String,String>orderby: ("o.orderby","asc")
+			 *
+			 * 最终查询语句：from ElecCommonmsgContent o where 1=1 and o.type=1 o.orderby asc
+			 * 		查询结果为elec_commonmsgContent表字段type=1的内容
+			 */
 			String stationCondition = " and o.type=?";
 			Object [] stationParams = {"1"};
 			Map<String, String> stationOrderby = new LinkedHashMap<String, String>();
 			stationOrderby.put("o.orderby", "asc");
-			List<ElecCommonmsgContent> stationList = elecCommonMsgContentDao.findCollectionByConditionNoPage(stationCondition, stationParams, stationOrderby);
-			//获取返回的数据（拼装之后）
+			List<ElecCommonmsgContent> stationList =
+					elecCommonMsgContentDao.findCollectionByConditionNoPage(stationCondition, stationParams, stationOrderby);
+
+			/**
+			 * 将查询出的elec_commonmsgContent表中的所有type值为1的数据记录的content字段拼成一个字符串stationContent
+			 */
 			String stationContent = "";
 			if(stationList!=null && stationList.size()>0){
 				for(ElecCommonmsgContent ElecCommonmsgContent:stationList){
@@ -85,15 +112,29 @@ public class ElecCommonMsgServiceImpl implements IElecCommonMsgService {
 					stationContent += content;
 				}
 			}
-			//将数据赋值给页面的属性（站点运行情况）
+			/**
+			 * 将字符串stationContent(内部是elec_commonmsgContent表所有type值为1的数据记录的content字段的值)赋给list[0]
+			 */
 			commonMsg.setStationRun(stationContent);
-			//以类型作为条件，按照显示顺序升序排列，查询站点运行情况的数据
+
+			/**
+			 * 查询参数：
+			 * String condition: " and o.type=? "
+			 * Object[] params: "2"
+			 * Map<String,String>orderby: ("o.orderby","asc")
+			 *
+			 * 最终查询语句：from ElecCommonmsgContent o where 1=1 and o.type=2 o.orderby asc
+			 * 		查询结果为elec_commonmsgContent表字段type=2的内容
+			 */
 			String devCondition = " and o.type=?";
 			Object [] devParams = {"2"};
 			Map<String, String> devOrderby = new LinkedHashMap<String, String>();
 			devOrderby.put("o.orderby", "asc");
 			List<ElecCommonmsgContent> devList = elecCommonMsgContentDao.findCollectionByConditionNoPage(devCondition, devParams, devOrderby);
-			//获取返回的数据（拼装之后）
+
+			/**
+			 * 将查询出的elec_commonmsgContent表中的所有type值为2数据记录的content字段拼成一个字符串devContent
+			 */
 			String devContent = "";
 			if(devList!=null && devList.size()>0){
 				for(ElecCommonmsgContent ElecCommonmsgContent:devList){
@@ -101,7 +142,9 @@ public class ElecCommonMsgServiceImpl implements IElecCommonMsgService {
 					devContent += content;
 				}
 			}
-			//将数据赋值给页面的属性（设备运行情况）
+			/**
+			 * 将字符串devContent(内部是elec_commonmsgContent表所有type值为2的数据记录的content字段的值)赋给list[0]
+			 */
 			commonMsg.setDevRun(devContent);
 		}
 		return commonMsg;

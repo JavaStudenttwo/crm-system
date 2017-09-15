@@ -23,6 +23,8 @@
 			<result name="loading">/WEB-INF/page/menu/loading.jsp</result>
 			<result name="title">/WEB-INF/page/menu/title.jsp</result>
 			<result name="change">/WEB-INF/page/menu/change.jsp</result>
+			<result name="alermStation">/WEB-INF/page/menu/alermStation.jsp</result>
+			<result name="alermDevice">/WEB-INF/page/menu/alermDevice.jsp</result>
 		</action>
 
 		<action name="userActon_*" class="userAction" method="{1}">

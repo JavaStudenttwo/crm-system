@@ -9,6 +9,7 @@
     
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache"><link href="${pageContext.request.contextPath }/css/Style.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath }/css/login.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
 body {
@@ -54,7 +55,11 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 			}
 	    }
 	}
-	/**添加10分钟后自动刷新页面，站点和设备运行的实时性*/
+	/**
+	 * 实现目的：添加10分钟后自动刷新页面，站点和设备运行的实时性
+	 * 通用功能：页面自动刷新
+	 *
+	 * */
 	window.onload=function(){
 		setTimeout('refresh10()',1000*60*10) ;
     }
@@ -62,16 +67,18 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 		window.location.reload();
 	}
 </script>
-<link href="${pageContext.request.contextPath }/css/login.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
 
 <form name="Form1" method="post" action="name.aspx" id="Form1">
 
-	<table width="100%" border="0" height="88" border="1" background=${pageContext.request.contextPath }/images/back1.jpg>
+	<table width="100%" border="0" height="88" border="1"
+		   background=${pageContext.request.contextPath }/images/back1.jpg>
 		<tr>
-			<td colspan=3 class="ta_01" align="center" background="${pageContext.request.contextPath }/images/b-info.gif"><strong>系统首页</strong></td>
+			<td colspan=3 class="ta_01" align="center"
+				background="${pageContext.request.contextPath }/images/b-info.gif"><strong>系统首页</strong></td>
 		</tr>
 
 		<tr>
@@ -79,9 +86,10 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 			
 			    <fieldset id="stationset" style="width: 500px; height: 430px; padding: 1 background:${pageContext.request.contextPath }/images/back1.JPG"><legend>
 				    <font color="#0000FF">
-				    <img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"><a href="#" onclick="shiftiframe('1')">站点运行情况</a></font></legend>
-					<IFRAME src="elecMenuAction_alermStation.do"  name="station" id="station" frameBorder="0" width="500" scrolling="auto" height="400"></IFRAME>	
-					     
+				    <img border="0" src="${pageContext.request.contextPath }/images/zoom.gif"
+						 width="14" height="14"><a href="menuAction_alermStation.action" onclick="shiftiframe('1')">站点运行情况</a></font></legend>
+					<IFRAME src="menuAction_alermStation.action"  name="station" id="station" frameBorder="0"
+							width="500" scrolling="auto" height="400"></IFRAME>
 			    </fieldset>
 			
 			</td>
@@ -89,8 +97,10 @@ BODY {SCROLLBAR-FACE-COLOR: #cccccc; SCROLLBAR-HIGHLIGHT-COLOR: #ffffFF; SCROLLB
 			<td width="50%" align="left" valign="top" id="devtd">
 				<fieldset id="devset" style="width: 500px; height: 430px; padding: 1 background:${pageContext.request.contextPath }/images/back1.JPG"><legend>
 					<font color="#0000FF">
-					<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif" width="14" height="14"><a href="#" onclick="shiftiframe('2')">设备运行情况</a></font></legend>
-	             	<IFRAME src="elecMenuAction_alermDevice.do"  name="dev" id="dev" frameBorder="0" width="500" scrolling="auto" height="400"></IFRAME>	
+					<img border="0" src="${pageContext.request.contextPath }/images/zoom.gif"
+						 width="14" height="14"><a href="menuAction_alermDevice.action" onclick="shiftiframe('2')">设备运行情况</a></font></legend>
+	             	<IFRAME src="menuAction_alermDevice.action"  name="dev" id="dev" frameBorder="0"
+							width="500" scrolling="auto" height="400"></IFRAME>
 				</fieldset>
 			</td>
 		</tr>

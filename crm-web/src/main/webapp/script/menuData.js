@@ -122,7 +122,7 @@ var privilegeDate = [{
 			name:'角色管理',
 			icon:'../images/MenuIcon/jueseguanli.gif',
 			target:'mainFrame',
-			url:'../system/roleIndex.jsp',
+			url:'/crm/roleIndex.action',
 			isParent:false
 		},{
 			mid:'ap',
@@ -130,7 +130,7 @@ var privilegeDate = [{
 			name:'运行监控',
 			icon:'../images/MenuIcon/daibanshiyi.gif',
 			target:'mainFrame',
-			url:'../system/elecCommonMsgAction_home.do',
+			url:'../crm/commonMsgAction_home.action',
 			isParent:false
 		},{
 			mid:'aq',

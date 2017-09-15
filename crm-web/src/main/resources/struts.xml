@@ -25,11 +25,17 @@
 			<result name="change">/WEB-INF/page/menu/change.jsp</result>
 			<result name="alermStation">/WEB-INF/page/menu/alermStation.jsp</result>
 			<result name="alermDevice">/WEB-INF/page/menu/alermDevice.jsp</result>
+			<result name=""></result>
 		</action>
 
 		<action name="userActon_*" class="userAction" method="{1}">
 			<result name="login"></result>
 		</action>
+
+		<action name="commonMsgAction_*" class="CommonMsgAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/actingIndex.jsp</result>
+		</action>
+
 
 
 

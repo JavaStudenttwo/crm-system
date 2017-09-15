@@ -3,7 +3,6 @@ package com.itheima.crm.controller;
 import com.itheima.crm.domain.ElecCommonmsg;
 import com.itheima.crm.domain.MenuForm;
 import com.itheima.crm.service.IElecCommonMsgService;
-import com.itheima.crm.service.impl.ElecCommonMsgServiceImpl;
 import com.itheima.crm.utils.ValueUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

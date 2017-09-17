@@ -1,7 +1,5 @@
-
-
 <%@ page language="java" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
 <title>运行监控模块编辑</title>
@@ -23,14 +21,61 @@
 	     	alert("设备运行情况字数不能超过2500字");
 	     	return;
 	  	}
-  		document.Form2.action="savePending.do";
+  		document.Form2.action="/crm/commonMsgAction_save.action";
   		document.Form2.submit();
   		alert(" 待办事宜保存成功!");
   }
+
   function addEnter(element){
    		document.getElementById(element).value = document.getElementById(element).value+"<br>";
    
   }
+  /* function Bs_LimitedTextarea(elementId, maxLength) {
+      var a = arguments;
+      var arrayIndex=0;
+      if (a.length==2) {
+          elementId = a[0];
+          maxLength = a[1];
+          arrayIndex = 0;
+      }
+      if (a.length==3) {
+          elementId = a[0];
+          maxLength = a[1];
+          arrayIndex = a[2];
+      }
+      .........
+      this.draw = function() {
+			if (isNaN(this._maxLength)) return;
+			if (this._maxLength <= 0) return;
+			this._element.bsObj = this;
+			try {
+				var htmlStr = '<br>';
+				if (this.useProgressBar) {
+					htmlStr += '<div id="' + this._objectId + '_progess" style="overflow:hidden; width:' ;
+					htmlStr += this._element.offsetWidth + 'px; height:18px; border:2px inset;';
+					htmlStr += '">';
+					htmlStr += '<img src="/_bsImages/spacer.gif" width="1" height="1" border="0">';
+					htmlStr += '</div>';
+				}
+				htmlStr += '<div';
+				if (typeof(this.infolineCssClass) == 'string')
+					htmlStr += ' class="' + this.infolineCssClass + '"';
+				if (typeof(this.infolineCssStyle) == 'string')
+					htmlStr += ' style="' + this.infolineCssStyle + '"';
+				htmlStr += '>' + this.infolineText + ' <div ';
+				htmlStr += ' style="display:inline;';
+				if (typeof(this.numberCssStyle) == 'string')
+					htmlStr += this.numberCssStyle;
+				htmlStr += '"';
+				if (typeof(this.numberCssClass) == 'string')
+					htmlStr += ' class="' + this.numberCssClass + '"';
+				htmlStr += 'id="' + this._objectId + '_no"></div>';
+				htmlStr += '</div>';
+				this._element.insertAdjacentHTML('afterEnd', htmlStr);
+				}
+
+      */
+
   function checkTextAreaLen(){
   		var stationRun = new Bs_LimitedTextarea('stationRun', 2500); 
         stationRun.infolineCssStyle = "font-family:arial; font-size:11px; color:gray;";
@@ -40,6 +85,8 @@
         devRun.infolineCssStyle = "font-family:arial; font-size:11px; color:gray;";
         devRun.draw();	
   }
+
+//  网页制作完全手册：onload 在浏览器完成对象的装载后立即触发。
   window.onload=function(){
 		checkTextAreaLen();
   }
@@ -57,10 +104,10 @@
 			<tr>
 			  	<td>
 	                <TABLE style="WIDTH: 105px; HEIGHT: 20px" border="0">
-									<TR>
-										<TD align="center" background="${pageContext.request.contextPath }/images/cotNavGround.gif"><img src="${pageContext.request.contextPath }/images/yin.gif" width="15"></TD>
-										<TD class="DropShadow" background="${pageContext.request.contextPath }/images/cotNavGround.gif">运行监控列表</TD>
-									</TR>
+						<TR>
+							<TD align="center" background="${pageContext.request.contextPath }/images/cotNavGround.gif"><img src="${pageContext.request.contextPath }/images/yin.gif" width="15"></TD>
+							<TD class="DropShadow" background="${pageContext.request.contextPath }/images/cotNavGround.gif">运行监控列表</TD>
+						</TR>
 		             </TABLE>
                   </td>
 			</tr>
@@ -77,17 +124,19 @@
 							<div id="showInfomation" style="visibility: hidden"></div>
 							<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 								<td style="HEIGHT:22px" align="center" width="40%">
-									<div class="scrollStyle" align="left" onmouseover="showInfoWithPanel(this)" onmouseout="hiddenInfoPanel(this)" style="table-layout:fixed;">
-										9点站点运行正常
+									<div class="scrollStyle" align="left" onmouseover="showInfoWithPanel(this)"
+										 onmouseout="hiddenInfoPanel(this)" style="table-layout:fixed;">
+										<s:property value="stationRun"/>
 									</div>
 								</td>
 								<td style="HEIGHT:22px" align="center" width="40%">
-									<div class="scrollStyle" align="left" onmouseover="showInfoWithPanel(this)" onmouseout="hiddenInfoPanel(this)" style="table-layout:fixed;">
-										9点设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv设备运行正常xcvcxvxcv
+									<div class="scrollStyle" align="left" onmouseover="showInfoWithPanel(this)"
+										 onmouseout="hiddenInfoPanel(this)" style="table-layout:fixed;">
+										<s:property value="devRun"/>
 									</div>
 								</td>
 								<td style="HEIGHT:22px" align="center" width="20%">
-									2010-08-08 12:55:55 
+									<s:date name="createDate" format="yyyy-MM-dd HH:mm:ss"/>
 								</td>
 							</tr>
 							
@@ -103,7 +152,8 @@
 	<table cellspacing="1" cellpadding="5" width="90%" align="center" bgcolor="#f5fafe" style="border:1px solid #8ba7e3" border="0">
 
         <tr>
-			<td class="ta_01" colspan=2 align="center" background="${pageContext.request.contextPath }/images/b-info.gif">
+			<td class="ta_01" colspan=2 align="center"
+				background="${pageContext.request.contextPath }/images/b-info.gif">
 			<font face="宋体" size="2"><strong>运行监控编辑</strong></font>
 			</td>
 		</tr>
@@ -112,15 +162,18 @@
 		<tr>
 			<td class="ta_01" align="center" bgcolor="#f5fafe" width="15%">站点运行情况：</td>
 			<td class="ta_01" bgcolor="#ffffff" style="word-break: break-all">
-	
-				<textarea name="stationRun" id="stationRun"   style="width: 500px; height: 160px; padding: 1;FONT-FAMILY: 宋体; FONT-SIZE: 9pt" onkeydown="if(event.keyCode==13)addEnter('stationRun');">9点站点运行正常</textarea>
+				<s:textarea name="stationRun" id="stationRun"
+							cssStyle="width: 500px; height: 160px; padding: 1;FONT-FAMILY: 宋体; FONT-SIZE: 9pt"
+							onkeydown="if(event.keyCode==13)addEnter('stationRun');">请输入内容</s:textarea>
 			</td>
 			
 		</tr>
 		<tr>
 			<td class="ta_01" align="center" bgcolor="#f5fafe" width="15%">设备运行情况：</td>
 			<td class="ta_01" bgcolor="#ffffff" style="word-break: break-all">
-				<textarea name="devRun" id="devRun"  style="width: 500px; height: 160px; padding: 1;FONT-FAMILY: 宋体; FONT-SIZE: 9pt" onkeydown="if(event.keyCode==13)addEnter('devRun');">9点设备运行正常</textarea>
+				<s:textarea name="devRun" id="devRun"
+							cssStyle="width: 500px; height: 160px; padding: 1;FONT-FAMILY: 宋体; FONT-SIZE: 9pt"
+							onkeydown="if(event.keyCode==13)addEnter('devRun');">请输入内容</s:textarea>
 			</td>
 			
 		</tr>

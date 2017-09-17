@@ -32,9 +32,16 @@
 			<result name="login"></result>
 		</action>
 
-		<action name="commonMsgAction_*" class="CommonMsgAction" method="{1}">
+		<action name="commonMsgAction_*" class="commonMsgAction" method="{1}">
 			<result name="home">/WEB-INF/page/system/actingIndex.jsp</result>
+			<result name="save">/WEB-INF/page/system/actingIndex.jsp</result>
 		</action>
+
+		<action name="ddlAction_*" class="dDLAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/dictionaryIndex.jsp</result>
+			<result name="save">/WEB-INF/page/system/actingIndex.jsp</result>
+		</action>
+
 
 
 

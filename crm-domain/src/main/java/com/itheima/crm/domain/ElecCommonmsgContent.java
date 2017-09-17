@@ -11,6 +11,10 @@ public class ElecCommonmsgContent {
     private String comId;
     private String type;
     private String content;
+    /**
+     * 因存入数据时考虑content属性大小有限，所以对一条大数据进行分割，分割成了几条小数据
+     * orderby属性记录的是次数据属于总数据的第几条
+     */
     private Integer orderby;
 
     @Id

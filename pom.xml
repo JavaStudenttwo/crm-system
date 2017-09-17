@@ -216,11 +216,11 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <!--<path>/crm-web</path>-->
-                    <!--<port>8081</port>-->
-                    <url>http://localhost:8080/manager/text</url>
-                    <username>admin</username>
-                    <password>admin</password>
+                    <path>/</path>
+                    <port>8080</port>
+                    <!--<url>http://localhost:8080/manager/text</url>-->
+                    <!--<username>admin</username>-->
+                    <!--<password>admin</password>-->
 
                 </configuration>
             </plugin>

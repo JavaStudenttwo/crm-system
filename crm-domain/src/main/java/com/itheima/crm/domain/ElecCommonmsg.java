@@ -1,7 +1,7 @@
 package com.itheima.crm.domain;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by 13718 on 2017/9/12.
@@ -12,7 +12,7 @@ public class ElecCommonmsg {
     private String comId;
     private String stationRun;
     private String devRun;
-    private Timestamp createDate;
+    private Date createDate;
 
     @Id
     @Column(name = "comID", nullable = false, length = 255)
@@ -46,11 +46,11 @@ public class ElecCommonmsg {
 
     @Basic
     @Column(name = "createDate", nullable = true)
-    public Timestamp getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Timestamp createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 

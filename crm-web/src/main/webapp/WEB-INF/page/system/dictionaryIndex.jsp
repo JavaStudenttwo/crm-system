@@ -15,15 +15,28 @@
 		function changetype(){
 		
 		  if(document.Form1.keyword.value=="jerrynew"){
-		    
-		     
+
 		  	 var textStr="<input type=\"text\" name=\"keywordname\" maxlength=\"50\" size=\"24\"> ";
 		     document.getElementById("newtypename").innerHTML="类型名称：";
 		     document.getElementById("newddlText").innerHTML=textStr;
-		     
-		     
+
 		     Pub.submitActionWithForm('Form2','${pageContext.request.contextPath }/system/dictionaryEdit.jsp','Form1');
-		    
+
+              /*Pub.submitActionWithForm=function(domId,action,sForm){
+                  /!**第一步：创建Ajax引擎对象*!/
+                  var req = Pub.newXMLHttpRequest();
+                  /!**第二步：req.onreadystatechange表示事件处理函数（相当于一个监听），用来监听客户端与服务器端的连接状态*!/
+                  var handlerFunction = Pub.getReadyStateHandler(req, domId,Pub.handleResponse);
+                  req.onreadystatechange = handlerFunction;
+                  /!**第三步：打开一个连接，要求：如果是POST请求，需要添加一个头部信息，否则此时不能使用send向服务器发送数据*!/
+                  req.open("POST", action, true);
+                  req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                  /!**第四步：向服务器发送数据，格式：name=张三&age=28*!/
+                  var str = Pub.getParams2Str(sForm);
+                  //传递表单Form1中的元素作为参数给服务器
+                  req.send(str);
+              }*/
+
 		  }else{
 		    
 		    var textStr="";
@@ -50,9 +63,7 @@
 	               alert("已存在此类型名称,请重新输入");
 	               return false;
 	             }
-	             
 	         }
-	         
 	          document.Form2.keywordname.value=document.Form1.keywordname.value;
 	          document.Form2.typeflag.value="new";
 	          
@@ -84,51 +95,7 @@
 		  }
 	      document.Form2.action="savedict.do";
 	      document.Form2.submit();     
-	}    
-  
-     
-     
-     
-/**       
- function insertRows(){ 
-
-  var tempRow=0; 
-  var tbl=document.getElementById("dictTbl");
-  tempRow=tbl.rows.length; 
-  var Rows=tbl.rows;//类似数组的Rows 
-  var newRow=tbl.insertRow(tbl.rows.length);//插入新的一行 
-  var Cells=newRow.cells;//类似数组的Cells 
-  for (i=0;i<3;i++)//每行的3列数据 
-  { 
-     var newCell=Rows[newRow.rowIndex].insertCell(Cells.length); 
-     newCell.align="center"; 
-     switch (i) 
-    { 
-      case 0 : newCell.innerHTML=""+tempRow+"";break; 
-      case 1 : newCell.innerHTML="<input name=\"itemname\" type=\"text\" id=\""+tempRow+"\" size=\"45\" maxlength=25>";break; 
-      case 2 : newCell.innerHTML="<a href='javascript:delTableRow(\""+tempRow+"\")'><img src=${pageContext.request.contextPath }/images/delete.gif width=15 height=14 border=0 style=CURSOR:hand></a>";break;
-
-    } 
-    //alert(newCell.innerHTML);
-  } 
- } 
-function delTableRow(rowNum){ 
-
-   var tbl=document.getElementById("dictTbl");
-    
-    if (tbl.rows.length >rowNum){ 
-      
-       tbl.deleteRow(rowNum); 
-     
-      for (i=rowNum;i<tbl.rows.length;i++)
-       {
-         tbl.rows[i].cells[0].innerHTML=i;
-         tbl.rows[i].cells[2].innerHTML="<a href='javascript:delTableRow(\""+i+"\")'><img src=${pageContext.request.contextPath }/images/delete.gif width=15 height=14 border=0 style=CURSOR:hand></a>";      
-         tbl.rows[i].cells[1].childNodes[0].id=i;
-      }
-   }
-}
-*/
+	}
 
 function insertRows(){ 
 	//获取表格对象
@@ -142,7 +109,6 @@ function insertRows(){
 	
 	var $tdDel = $("<td align='center'></td>");
 	$tdDel.html("<a href='javascript:delTableRow(\""+tempRow+"\")'><img src=${pageContext.request.contextPath }/images/delete.gif width=15 height=14 border=0 style=CURSOR:hand></a>");
-	
 	
 	// 创建tr，将3个td放置到tr中
 	var $tr = $("<tr></tr>");
@@ -193,51 +159,25 @@ function delTableRow(rowNum){
 				<tr>
 					<td class="ta_01" align="right" width="35%" >类型列表：</td>
 					<td class="ta_01" align="left"  width="30%" >
-						<select name="keyword" class="bg" style="width:180px" onchange="changetype()">
-						 <option value="jerrynew"></option>
-						 
-						 <option value="故障类型">故障类型</option>
-						 
-						 <option value="建筑类型">建筑类型</option>
-						 
-						 <option value="角色类型">角色类型</option>
-						 
-						 <option value="设备类型">设备类型</option>
-						 
-						 <option value="设备状态">设备状态</option>
-						 
-						 <option value="性别">性别</option>
-						 
-						 <option value="所属单位">所属单位</option>
-						 
-						 <option value="是否在职">是否在职</option>
-						 
-						 <option value="图纸类别">图纸类别</option>
-						 
-						 <option value="项目级别">项目级别</option>
-						 
-						 <option value="项目类型">项目类型</option>
-						 
-						 <option value="站点类别">站点类别</option>
-						 
-						</select>
+						<s:select list="#request.list" name="keyword" id="keyword"
+								  listKey="keyword" listValue="keyword"
+								  headerKey="jerrynew" headerValue=""
+								  cssClass="bg" cssStyle="width:180px" onchange="changetype()">
+						</s:select>
 					</td>
 						
 					 <td class="ta_01"  align="right" width="35%" >					 	    
 				    </td>	  		
 				</tr>
 				
-				
-				
 			    <tr>
 			       <td class="ta_01" align="right" width="35%" id="newtypename">类型名称：</td>
 				   <td class="ta_01"  align="left" width="30%"  height=20 id="newddlText">
-				    <input type="text" name="keywordname" maxlength="25" size=24>	
+				    <input type="text" name="keywordname" maxlength="25" size=24>
 				   </td>
 				   <td class="ta_01"  align="right" width="35%" ></td>
 				</tr>
-				
-				
+
 				<TR height=10><td colspan=3 align="right">
 				   <input type="button" name="saveitem" value="添加选项" style="font-size:12px; color:black; height=20;width=80" onClick="insertRows()">
 				 </td></TR>   
@@ -251,15 +191,12 @@ function delTableRow(rowNum){
      <td >
 	   <table cellspacing="0"   cellpadding="1" rules="all" bordercolor="gray" border="1" id="dictTbl"
 		    style="BORDER-RIGHT:gray 1px solid; BORDER-TOP:gray 1px solid; BORDER-LEFT:gray 1px solid; WIDTH:100%; WORD-BREAK:break-all; BORDER-BOTTOM:gray 1px solid; BORDER-COLLAPSE:collapse; BACKGROUND-COLOR:#f5fafe; WORD-WRAP:break-word">
-			
-		
-						
+
 				<tr style="FONT-WEIGHT:bold;FONT-SIZE:12pt;HEIGHT:25px;BACKGROUND-COLOR:#afd1f3">
 					<td class="ta_01" align="center"  width="20%" height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">编号</td>
 					<td class="ta_01" align="center"  width="60%" height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">名称</td>
 					<td class="ta_01" align="center"  width="20%" height=22 background="${pageContext.request.contextPath }/images/tablehead.jpg">删除</td>					
 				</tr>
-			    
 			   
 			     <tr>
 				   <td class="ta_01" align="center"  width="20%">1</td>

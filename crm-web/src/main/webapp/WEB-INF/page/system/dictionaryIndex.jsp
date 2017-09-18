@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%@ page language="java"  pageEncoding="UTF-8"%>
 
@@ -159,11 +160,21 @@ function delTableRow(rowNum){
 				<tr>
 					<td class="ta_01" align="right" width="35%" >类型列表：</td>
 					<td class="ta_01" align="left"  width="30%" >
-						<s:select list="#request.list" name="keyword" id="keyword"
+						<%--<s:select list="#request.list" name="keyword" id="keyword"
 								  listKey="keyword" listValue="keyword"
 								  headerKey="jerrynew" headerValue=""
 								  cssClass="bg" cssStyle="width:180px" onchange="changetype()">
 						</s:select>
+						<s:property value="#request.list[0].{keyword}" />--%>
+						<select name="keyword" class="bg" style="width:180px" onchange="changetype()">
+							<option value="jerrynew"></option>
+							<s:iterator value="#request.list" var="system">
+								<option value="<s:property value="#system.keyword"/>">
+									<s:property value="#system.keyword"/>
+								</option>
+							</s:iterator>
+						</select>
+
 					</td>
 						
 					 <td class="ta_01"  align="right" width="35%" >					 	    
@@ -204,9 +215,7 @@ function delTableRow(rowNum){
 				   <input name="itemname" type="text"  size="45" maxlength="25"></td>
 				   <td class="ta_01" align="center"  width="20%"></td>
 				</tr>
-	          
-	            
-			
+
 	     </table>
 	   </td>
 	 </tr>

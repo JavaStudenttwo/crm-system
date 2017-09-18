@@ -19,19 +19,21 @@ public class ElecSystemDDLDaoImpl  extends CommonDaoImpl<ElecSystemddl> implemen
 	public List<ElecSystemddl> findSystemDDLListByDistinct() {
 		//返回的List集合
 		List<ElecSystemddl> systemList = new ArrayList<ElecSystemddl>();
-//		String hql = "SELECT DISTINCT o.keyword FROM ElecSystemDDL o";
-//		List<Object> list = this.getHibernateTemplate().find(hql);
-//		//组织页面返回的结果
-//		if(list!=null && list.size()>0){
-//			for(Object o:list){
-//				ElecSystemDDL elecSystemDDL = new ElecSystemDDL();
-//				//数据类型
-//				elecSystemDDL.setKeyword(o.toString());
-//				systemList.add(elecSystemDDL);
-//			}
-//		}
+
+
+		String hql = "SELECT DISTINCT o.keyword FROM ElecSystemddl o";
+		List<ElecSystemddl> list = (List<ElecSystemddl>) this.getHibernateTemplate().find(hql);
+		//组织页面返回的结果
+		if(list!=null && list.size()>0){
+			for(Object o:list){
+				ElecSystemddl elecSystemddl = new ElecSystemddl();
+				//数据类型
+				elecSystemddl.setKeyword(o.toString());
+				systemList.add(elecSystemddl);
+			}
+		}
 		/**使用hql语句直接将投影查询的字段放置到对象中*/
-		String hql = "SELECT DISTINCT new com.itheima.crm.domain.ElecSystemddl(o.keyword) FROM ElecSystemddl o";
+//		String hql = "SELECT DISTINCT o.keyword FROM ElecSystemddl o";
 
 //		此处进行了一次强转解决一个报错
 		systemList = (List<ElecSystemddl>) this.getHibernateTemplate().find(hql);
